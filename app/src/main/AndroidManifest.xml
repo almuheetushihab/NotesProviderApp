@@ -22,6 +22,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-    </application>
 
+        <provider
+            android:name=".data.local.provider.NotesProvider"
+            android:authorities="com.shihab.notesprovider"
+            android:exported="true" />
+    </application>
 </manifest>
