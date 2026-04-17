@@ -8,9 +8,8 @@ import kotlinx.coroutines.flow.MutableStateFlow
 
 class NotesViewModel(
     private val addNoteUseCase: AddNoteUseCase,
-    private val getNotesUseCase: GetNotesUseCase
+    private val getNotesUseCase: GetNotesUseCase,
 ) : ViewModel() {
-
     private val _notes = MutableStateFlow<List<Note>>(emptyList())
     val notes = _notes
 

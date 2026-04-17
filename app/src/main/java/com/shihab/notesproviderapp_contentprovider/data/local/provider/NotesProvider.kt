@@ -28,7 +28,7 @@ class NotesProvider : ContentProvider() {
     override fun insert(
         uri: Uri,
         values: ContentValues?,
-    ): Uri? {
+    ): Uri {
         val db = dbHelper.writableDatabase
         db.insert("notes", null, values)
         context?.contentResolver?.notifyChange(uri, null)
