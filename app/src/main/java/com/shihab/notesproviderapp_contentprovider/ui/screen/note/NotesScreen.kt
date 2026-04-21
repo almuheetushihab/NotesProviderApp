@@ -39,7 +39,13 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.shihab.notesproviderapp_contentprovider.data.repository.NotesRepositoryImpl
+import com.shihab.notesproviderapp_contentprovider.domain.model.Note
+import com.shihab.notesproviderapp_contentprovider.domain.usecase.AddNoteUseCase
+import com.shihab.notesproviderapp_contentprovider.domain.usecase.GetNotesUseCase
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -134,7 +140,7 @@ fun NotesScreen(viewModel: NotesViewModel) {
 }
 
 @Composable
-fun NoteItem(note: com.shihab.notesproviderapp_contentprovider.domain.model.Note) {
+fun NoteItem(note: Note) {
     Card(
         modifier = Modifier.fillMaxWidth(),
         shape = RoundedCornerShape(16.dp),
@@ -160,4 +166,15 @@ fun NoteItem(note: com.shihab.notesproviderapp_contentprovider.domain.model.Note
             )
         }
     }
+}
+
+@Preview
+@Composable
+fun NotesScreenPreview() {
+    NotesScreen(
+        NotesViewModel(
+            AddNoteUseCase(NotesRepositoryImpl(LocalContext.current)),
+            GetNotesUseCase(NotesRepositoryImpl(LocalContext.current))
+        )
+    )
 }
